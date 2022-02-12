@@ -29,12 +29,23 @@ const newspapers = [
   {
     name: 'thetimes',
     address: 'https://www.thetimes.co.uk/environment/climate-change',
-	base:''
+    base: ''
   },
   {
     name: 'bbc',
     address: 'https://www.bbc.com/news/science-environment-56837908',
-	base:''
+    base: ''
+  },
+  {
+    name: 'who',
+    address: 'https://www.who.int/health-topics/climate-change',
+    base: ''
+  },
+  {
+    name: 'cable',
+    address:
+      'https://www.thecable.ng/dare-nigerians-must-take-climate-change-serious-to-address-food-insecurity',
+    base: ''
   }
 ]
 

@@ -71,7 +71,7 @@ newspapers.forEach(newspaper => {
     })
 })
 app.get('/', (req, res, next) => {
-  res.json(articles)
+  res.json(newspapers)
 })
 
 app.get('/:newspaperid', (req, res, next) => {

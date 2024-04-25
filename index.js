@@ -49,66 +49,66 @@ const newspapers = [
   }
 ]
 
-newspapers.forEach(newspaper => {
-  axios
-    .get(newspaper.address)
-    .then(response => {
-      let html = response.data
-      const $ = cheerio.load(html)
+// newspapers.forEach(newspaper => {
+//   axios
+//     .get(newspaper.address)
+//     .then(response => {
+//       let html = response.data
+//       const $ = cheerio.load(html)
 
-      $('a:contains(climate)', html).each(function () {
-        const title = $(this).text()
-        const url = $(this).attr('href')
-        articles.push({
-          title,
-          url,
-          source: newspaper.name
-        })
-      })
-    })
-    .catch(err => {
-      console.log(err)
-    })
-})
+//       $('a:contains(climate)', html).each(function () {
+//         const title = $(this).text()
+//         const url = $(this).attr('href')
+//         articles.push({
+//           title,
+//           url,
+//           source: newspaper.name
+//         })
+//       })
+//     })
+//     .catch(err => {
+//       console.log(err)
+//     })
+// })
 app.get('/', (req, res, next) => {
   res.json(newspapers)
 })
 
-app.get('/:newspaperid', (req, res, next) => {
-  let id = req.params.newspaperid
+// app.get('/:newspaperid', (req, res, next) => {
+//   let id = req.params.newspaperid
 
-  const newspaperFilter = newspapers.filter(
-    newspaper => newspaper.name == id
-  )[0].address
+//   const newspaperFilter = newspapers.filter(
+//     newspaper => newspaper.name == id
+//   )[0].address
 
-  const newspaperBase = newspapers.filter(newspaper => newspaper.name == id)[0]
-    .base
+//   const newspaperBase = newspapers.filter(newspaper => newspaper.name == id)[0]
+//     .base
 
-  axios
-    .get(newspaperFilter)
-    .then(response => {
-      const html = response.data
+//   axios
+//     .get(newspaperFilter)
+//     .then(response => {
+//       const html = response.data
 
-      const $ = cheerio.load(html)
+//       const $ = cheerio.load(html)
 
-      const specificarticles = []
+//       const specificarticles = []
 
-      $('a:contains(climate)', html).each(function () {
-        const title = $(this).text()
-        const url = $(this).attr('href')
-        specificarticles.push({
-          title,
-          url: url,
-          source: id
-        })
-      })
+//       $('a:contains(climate)', html).each(function () {
+//         const title = $(this).text()
+//         const url = $(this).attr('href')
+//         specificarticles.push({
+//           title,
+//           url: url,
+//           source: id
+//         })
+//       })
 
-      res.json(specificarticles)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-})
+//       res.json(specificarticles)
+//     })
+//     .catch(err => {
+//       console.log(err)
+//     })
+// })
 
 //check for db connection
 // db.connect(err => {
